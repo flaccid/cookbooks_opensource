@@ -16,14 +16,16 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
 
 service "mongodb"
+  supports :status => true, :restart => true, :stop => true, :start => true, :reload => true
+  action :enable
+end
 
 link "/var/lib/mongodb" do
   to node.mongodb.dbpath
-  action :nothing
   notifies :restart, "service[mongodb]", :delayed
+  action :nothing
 end
 
 mv = execute "move dir" do
@@ -34,8 +36,8 @@ end
 
 ruby_block do
   block do
-    if File.directory?("/var/lib/mongodb")
-      mv.run_action(:run  )
+    if File.directory?('/var/lib/mongodb')
+      mv.run_action(:run)
     end
   end
 end
