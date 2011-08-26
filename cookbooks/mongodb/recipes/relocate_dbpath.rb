@@ -33,7 +33,7 @@ move_dbpath = execute "move_dbpath" do
 end
 
 link "/var/lib/mongodb" do
-  to"#{node.mongodb.dbpath}"
+  to "#{node.mongodb.dbpath}"
   notifies :restart, "service[mongodb]", :delayed
   action :nothing
 end
