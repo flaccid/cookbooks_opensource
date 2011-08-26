@@ -19,13 +19,13 @@
 
 log "Relocate MongoDB dbpath."
 
+directory "/var/lib/mongodb"
+
 link "/var/lib/mongodb" do
   to node.mongodb.dbpath
   notifies :restart, "service[mongodb]", :delayed
   action :nothing
 end
-
-directory "/var/lib/mongodb"
 
 mv = execute "move dir" do
   command "mv -v /var/lib/mongodb #{node.mongodb.dbpath}"
@@ -37,7 +37,8 @@ ruby_block do
   block do
     if File.directory?('/var/lib/mongodb')
       Chef::Log.info("/var/lib/mongodb is a directory.")
-      #mv.run_action(:run)
+      Chef::Log.info("Move directory /var/lib/mongodb into #{node.mongodb.dbpath}.")
+      mv.run_action(:run)
     end
   end
 end
