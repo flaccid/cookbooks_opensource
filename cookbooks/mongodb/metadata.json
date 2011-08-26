@@ -30,7 +30,8 @@
       "default": "/mnt/storage",
       "type": "string",
       "recipes": [
-        "mongodb::relocate_dbpath"
+        "mongodb::relocate_dbpath",
+        "mongodb::configure"
       ],
       "description": "The location of the MongoDB data.",
       "display_name": "MongoDB dbpath"
@@ -64,7 +65,9 @@
   "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n= ATTRIBUTES: \n\n= USAGE:\n\n",
   "recipes": {
     "mongodb::relocate_dbpath": "Moves the MongoDB db data directory.",
-    "mongodb::default": "Installs MongoDB."
+    "mongodb::start_mongodb": "Starts the mongodb daemon.",
+    "mongodb::default": "Installs MongoDB.",
+    "mongodb::stop_mongodb": "Stops the mongodb daemon."
   },
   "providing": {
   },

@@ -7,6 +7,8 @@ version          "0.1"
 
 recipe "mongodb::default", "Installs MongoDB."
 recipe "mongodb::relocate_dbpath", "Moves the MongoDB db data directory."
+recipe "mongodb::start_mongodb", "Starts the mongodb daemon."
+recipe "mongodb::stop_mongodb", "Stops the mongodb daemon."
 
 attribute "mongodb", :display_name => "MongoDB", :type => "hash"
 
@@ -21,6 +23,6 @@ attribute "mongodb/dbpath",
   :display_name => "MongoDB dbpath", 
   :description => "The location of the MongoDB data.", 
   :required => false,
-  :recipes => ["mongodb::relocate_dbpath"],
+  :recipes => ["mongodb::relocate_dbpath", "mongodb::configure"],
   :default => '/mnt/storage',
   :choice => ['/mnt/storage']

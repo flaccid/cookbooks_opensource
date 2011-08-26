@@ -1,5 +1,5 @@
 # Cookbook Name:: mongodb
-# Recipe:: relocate_dbpath
+# Recipe:: stop_mongodb
 #
 # Copyright 2010, RightScale Inc.
 #
@@ -17,22 +17,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-log "Relocate MongoDB dbpath."
-
-link "/var/lib/mongodb" do
-  to "#{node.mongodb.dbpath}"
-  notifies :restart, "service[mongodb]", :delayed
-  action :nothing
-end
-
-if File.directory?('/var/lib/mongodb')
-  Chef::Log.info("/var/lib/mongodb is a directory.")
-  Chef::Log.info("Move directory /var/lib/mongodb into #{node.mongodb.dbpath}.")
-end
-
-execute "move_dbpath" do
-  command "mv -v /var/lib/mongodb #{node.mongodb.dbpath}/"
-  creates "#{node.mongodb.dbpath}"
-  notifies :create, "link[/var/lib/mongodb]", :immediately
-  action :run
+service "mongodb" do
+  action :stop
 end
