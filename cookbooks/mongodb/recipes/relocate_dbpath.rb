@@ -36,6 +36,7 @@ directory "/var/lib/mongodb"
 ruby_block do
   block do
     if File.directory?('/var/lib/mongodb')
+      log "/var/lib/mongodb is a directory."
       mv.run_action(:run)
     end
   end
