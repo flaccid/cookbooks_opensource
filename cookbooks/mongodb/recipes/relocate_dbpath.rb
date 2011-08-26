@@ -27,9 +27,8 @@ link "/var/lib/mongodb" do
   action :nothing
 end
 
-mv = execute "move dir" do
+move_dbpath = execute "move dir" do
   command "mv -v /var/lib/mongodb #{node.mongodb.dbpath}"
-  notifies :create, "link[/var/lib/mongodb]", :immediately
   action :nothing
 end
 
@@ -38,7 +37,7 @@ ruby_block do
     if File.directory?('/var/lib/mongodb')
       Chef::Log.info("/var/lib/mongodb is a directory.")
       Chef::Log.info("Move directory /var/lib/mongodb into #{node.mongodb.dbpath}.")
-      mv.run_action(:run)
+      move_dbpath.run_action(:run)
     end
   end
 end
