@@ -21,7 +21,8 @@ if ["centos", "redhat", "fedora"].include? node.platform
 end
 
 service "mongodb" do
-  action [ :enable, :stop ]
+  supports :restart => true, :reload => true
+  action [ :enable ]
 end
 
 # mongodb is part of the default ubuntu repository as of 10.04
