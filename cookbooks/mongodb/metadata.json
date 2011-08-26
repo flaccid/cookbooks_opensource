@@ -10,7 +10,7 @@
   },
   "attributes": {
     "mongodb/dbpath": {
-      "required": "required",
+      "required": "optional",
       "calculated": false,
       "choice": [
         "/mnt/storage"

@@ -18,7 +18,7 @@ attribute "mongodb/release",
 attribute "mongodb/dbpath", 
   :display_name => "MongoDB dbpath", 
   :description => "The location of the MongoDB data.", 
-  :required => true,
+  :required => false,
   :recipes => ["mongodb::relocate_dbpath"],
   :default => '/mnt/storage',
   :choice => ['/mnt/storage']
