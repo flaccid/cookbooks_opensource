@@ -39,4 +39,5 @@ if File.directory?('/var/lib/mongodb')
     creates "#{node.mongodb.dbpath}"
     notifies :create, "link[/var/lib/mongodb]", :immediately
     action :run
+  end
 end
