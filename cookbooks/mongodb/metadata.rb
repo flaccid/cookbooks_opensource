@@ -26,5 +26,5 @@ attribute "mongodb/dbpath",
   :description => "The location of the MongoDB data.", 
   :required => false,
   :recipes => ["mongodb::relocate_dbpath", "mongodb::configure"],
-  :default => '/mnt/storage',
-  :choice => ['/mnt/storage']
+  :default => '/var/lib/mongodb/',
+  :choice => ['/mnt/storage/mongodb/', '/var/lib/mongodb/']

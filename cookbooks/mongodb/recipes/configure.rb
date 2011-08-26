@@ -17,11 +17,19 @@
 
 include_recipe("mongodb::default")
 
+service "mongodb"
+
 template "/etc/mongodb.conf" do
-  notifies :restart, "service[mongodb]", :immediately
+  notifies :restart, resources(:service => "mongodb")
   source "mongodb.conf.erb"
   variables(
     :dbpath => "#{node.mongodb.dbpath}",
     :bind_ip => "127.0.0.1"
   )
 end
+
+directory "#{node.mongodb.dbpath}" do
+  owner "mongodb"
+  group "nogroup"
+  action :create
+  recursive true

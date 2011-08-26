@@ -25,9 +25,10 @@
       "required": "optional",
       "calculated": false,
       "choice": [
-        "/mnt/storage"
+        "/mnt/storage/mongodb/",
+        "/var/lib/mongodb/"
       ],
-      "default": "/mnt/storage",
+      "default": "/var/lib/mongodb/",
       "type": "string",
       "recipes": [
         "mongodb::relocate_dbpath",
