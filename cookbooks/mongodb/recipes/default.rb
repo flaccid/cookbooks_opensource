@@ -20,11 +20,6 @@ if ["centos", "redhat", "fedora"].include? node.platform
   exit(1)
 end
 
-service "mongodb" do
-  supports :restart => true, :reload => true
-  action [ :enable ]
-end
-
 # mongodb is part of the default ubuntu repository as of 10.04
 if node[:mongodb][:release] == 'stable' && node.platform_version == '10.04'
   package "mongodb"
@@ -41,3 +36,5 @@ else
   end
   package "mongodb-#{node.mongodb.release}"
 end
+
+service "mongodb"
