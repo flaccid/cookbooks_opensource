@@ -18,16 +18,24 @@
 # limitations under the License.
 #
 
-service "mongdb" do
-  action :stop
-end
-
-system("mv -v /var/lib/mongodb #{node.mongodb.dbpath}")
+service "mongodb"
 
 link "/var/lib/mongodb" do
-  to "#{node.mongodb.dbpath}"
+  to node.mongodb.dbpath
+  action :nothing
+  notifies :restart, "service[mongodb]", :delayed
 end
 
-service "mongodb" do
-  action :start
+mv = execute "move dir" do
+  command "mv -v /var/lib/mongodb #{node.mongodb.dbpath}"
+  notifies :run, "link[/var/lib/mongodb]", :immediately
+  action :nothing
+end
+
+ruby_block do
+  block do
+    if File.directory?("/var/lib/mongodb")
+      mv.run_action(:execute)
+    end
+  end
 end
