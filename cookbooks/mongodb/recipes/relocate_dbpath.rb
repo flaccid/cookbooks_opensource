@@ -28,6 +28,6 @@ link "/var/lib/mongodb" do
   to "/mnt/storage/mongodb"
 end
 
-service "mongdb" do
+service "mongodb" do
   action :start
 end
