@@ -38,6 +38,5 @@ else
 end
 
 service "mongodb" do
-  supports :status => true, :restart => true, :stop => true, :start => true, :reload => true
   action :enable
 end
