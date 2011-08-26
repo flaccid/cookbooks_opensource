@@ -15,8 +15,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+include_recipe("mongodb::default")
+
 template "/etc/mongodb.conf" do
-  notifies :restart, "service[mongodb]"
+  notifies :restart, "service[mongodb]", :immediately
   source "mongodb.conf.erb"
   variables(
     :dbpath => "#{node.mongodb.dbpath}",
