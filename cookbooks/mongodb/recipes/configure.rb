@@ -16,7 +16,8 @@
 # limitations under the License.
 
 template "/etc/mongodb.conf" do
-  source "mongo.conf.erb"
+  notifies :restart, "service[mongodb]"
+  source "mongodb.conf.erb"
   variables(
     :dbpath => "#{node.mongodb.dbpath}",
     :bind_ip => "127.0.0.1"
