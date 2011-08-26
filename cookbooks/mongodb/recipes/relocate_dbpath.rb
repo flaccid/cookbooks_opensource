@@ -24,15 +24,15 @@ log "Relocate MongoDB dbpath."
 #  action :nothing
 #end
 
-link "/var/lib/mongodb" do
-  to node.mongodb.dbpath
-  notifies :restart, "service[mongodb]", :delayed
-  action :nothing
-end
-
 mv = execute "move dir" do
   command "mv -v /var/lib/mongodb #{node.mongodb.dbpath}"
   notifies :create, "link[/var/lib/mongodb]", :immediately
+  action :nothing
+end
+
+link "/var/lib/mongodb" do
+  to node.mongodb.dbpath
+  notifies :restart, "service[mongodb]", :delayed
   action :nothing
 end
 
