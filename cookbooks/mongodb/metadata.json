@@ -25,8 +25,7 @@
       "required": "optional",
       "calculated": false,
       "choice": [
-        "/mnt/storage/mongodb",
-        "/mnt/mongodb"
+        "/mnt/storage"
       ],
       "type": "string",
       "recipes": [
@@ -64,7 +63,7 @@
   "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n= ATTRIBUTES: \n\n= USAGE:\n\n",
   "recipes": {
     "mongodb::relocate_dbpath": "Moves the MongoDB db data directory.",
-    "mongodb::default": "installs MongoDB"
+    "mongodb::default": "Installs MongoDB."
   },
   "providing": {
   },
