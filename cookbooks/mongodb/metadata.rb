@@ -5,6 +5,7 @@ description      "Installs/Configures mongodb"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.rdoc'))
 version          "0.1"
 recipe "mongodb::default", "installs MongoDB"
+recipe "mongodb::relocate_dbpath", "Moves the MongoDB db data directory."
 
 attribute "mongodb", :display_name => "MongoDB", :type => "hash"
 
@@ -15,3 +16,9 @@ attribute "mongodb/release",
   :recipes => ["mongodb::default"],
   :choice => ['stable', 'unstable', 'snapshot']
 
+attribute "mongodb/dbpath", 
+  :display_name => "MongoDB dbpath", 
+  :description => "The location of the MongoDB data.", 
+  :required => false, 
+  :recipes => ["mongodb::relocate_dbpath"],
+  :choice => ['/mnt/storage/mongodb', '/mnt/mongodb']
