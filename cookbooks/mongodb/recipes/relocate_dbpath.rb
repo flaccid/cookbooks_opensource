@@ -25,7 +25,7 @@ end
 system("mv -v /var/lib/mongodb #{node.mongodb.dbpath}")
 
 link "/var/lib/mongodb" do
-  to "/mnt/storage/mongodb"
+  to "#{node.mongodb.dbpath}"
 end
 
 service "mongodb" do
