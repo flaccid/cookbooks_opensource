@@ -1,11 +1,11 @@
 {
-  "maintainer": "RightScale opensource",
+  "maintainer": "RightScale Open Source",
   "replacing": {
   },
   "maintainer_email": "opensource@rightscale.com",
   "groupings": {
   },
-  "description": "Installs/Configures mongodb",
+  "description": "Installs/Configures mongodb.",
   "recommendations": {
   },
   "attributes": {
@@ -64,11 +64,11 @@
   "name": "mongodb",
   "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n= ATTRIBUTES: \n\n= USAGE:\n\n",
   "recipes": {
+    "mongodb::configure": "Configures mongodb.",
     "mongodb::relocate_dbpath": "Moves the MongoDB db data directory.",
     "mongodb::start_mongodb": "Starts the mongodb daemon.",
     "mongodb::default": "Installs MongoDB.",
     "mongodb::restart_mongodb": "Restarts the mongodb daemon.",
-    "mongodb::configure_mongodb": "Configures mongodb.",
     "mongodb::stop_mongodb": "Stops the mongodb daemon."
   },
   "providing": {

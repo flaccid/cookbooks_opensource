@@ -1,7 +1,7 @@
-maintainer       "RightScale opensource"
+maintainer       "RightScale Open Source"
 maintainer_email "opensource@rightscale.com"
 license          IO.read(File.join(File.dirname(__FILE__), '..', '..', 'LICENSE'))
-description      "Installs/Configures mongodb"
+description      "Installs/Configures mongodb."
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.rdoc'))
 version          "0.1"
 
@@ -9,7 +9,7 @@ recipe "mongodb::default", "Installs MongoDB."
 recipe "mongodb::relocate_dbpath", "Moves the MongoDB db data directory."
 recipe "mongodb::start_mongodb", "Starts the mongodb daemon."
 recipe "mongodb::stop_mongodb", "Stops the mongodb daemon."
-recipe "mongodb::configure_mongodb", "Configures mongodb."
+recipe "mongodb::configure", "Configures mongodb."
 recipe "mongodb::restart_mongodb", "Restarts the mongodb daemon."
 
 attribute "mongodb", :display_name => "MongoDB", :type => "hash"
