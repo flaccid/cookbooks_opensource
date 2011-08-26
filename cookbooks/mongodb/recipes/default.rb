@@ -1,8 +1,7 @@
-#
 # Cookbook Name:: mongodb
 # Recipe:: default
 #
-# Copyright 2010, Example Com
+# Copyright 2011, RightScale Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,10 +14,9 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
 
 if ["centos", "redhat", "fedora"].include? node[:platform]
-  Chef::Log.info("ERROR: this cookbook only supports Ubuntu at this time")
+  Chef::Log.info("ERROR: this cookbook only supports Ubuntu at this time, exiting.")
   exit(1)
 end
 
