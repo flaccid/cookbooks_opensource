@@ -30,7 +30,8 @@ end
 
 directory "#{node.mongodb.dbpath}" do
   owner "mongodb"
-  group "nogroup"
+  group "mongodb"
+  mode "0755"
   action :create
   recursive true
 end
