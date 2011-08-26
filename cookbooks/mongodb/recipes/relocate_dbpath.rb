@@ -28,14 +28,14 @@ end
 
 mv = execute "move dir" do
   command "mv -v /var/lib/mongodb #{node.mongodb.dbpath}"
-  notifies :run, "link[/var/lib/mongodb]", :immediately
+  notifies :create, "link[/var/lib/mongodb]", :immediately
   action :nothing
 end
 
 ruby_block do
   block do
     if File.directory?("/var/lib/mongodb")
-      mv.run_action(:execute)
+      mv.run_action(:run)
     end
   end
 end
