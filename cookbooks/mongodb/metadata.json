@@ -67,6 +67,7 @@
     "mongodb::relocate_dbpath": "Moves the MongoDB db data directory.",
     "mongodb::start_mongodb": "Starts the mongodb daemon.",
     "mongodb::default": "Installs MongoDB.",
+    "mongodb::restart_mongodb": "Restarts the mongodb daemon.",
     "mongodb::stop_mongodb": "Stops the mongodb daemon."
   },
   "providing": {
