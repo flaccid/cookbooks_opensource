@@ -33,3 +33,4 @@ directory "#{node.mongodb.dbpath}" do
   group "nogroup"
   action :create
   recursive true
+end
