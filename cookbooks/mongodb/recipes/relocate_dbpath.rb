@@ -25,6 +25,12 @@ service "mongodb" do
   action :nothing
 end
 
+link "/var/lib/mongodb" do
+  to "#{node.mongodb.dbpath}"
+  notifies :restart, "service[mongodb]", :delayed
+  action :nothing
+end
+
 move_dbpath = execute "move_dbpath" do
   command "mv -v /var/lib/mongodb #{node.mongodb.dbpath}/"
   creates "#{node.mongodb.dbpath}"
@@ -32,19 +38,8 @@ move_dbpath = execute "move_dbpath" do
   action :nothing
 end
 
-link "/var/lib/mongodb" do
-  to "#{node.mongodb.dbpath}"
-  notifies :restart, "service[mongodb]", :delayed
-  action :nothing
+if File.directory?('/var/lib/mongodb')
+  Chef::Log.info("/var/lib/mongodb is a directory.")
+  Chef::Log.info("Move directory /var/lib/mongodb into #{node.mongodb.dbpath}.")
+  move_dbpath.run_action(:run)
 end
-
-ruby_block do
-  block do
-    if File.directory?('/var/lib/mongodb')
-      Chef::Log.info("/var/lib/mongodb is a directory.")
-      Chef::Log.info("Move directory /var/lib/mongodb into #{node.mongodb.dbpath}.")
-      move_dbpath.run_action(:run)
-    end
-  end
-end
-
