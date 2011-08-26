@@ -4,6 +4,7 @@ license          IO.read(File.join(File.dirname(__FILE__), '..', '..', 'LICENSE'
 description      "Installs/Configures mongodb"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.rdoc'))
 version          "0.1"
+
 recipe "mongodb::default", "Installs MongoDB."
 recipe "mongodb::relocate_dbpath", "Moves the MongoDB db data directory."
 
@@ -17,6 +18,7 @@ attribute "mongodb/release",
 attribute "mongodb/dbpath", 
   :display_name => "MongoDB dbpath", 
   :description => "The location of the MongoDB data.", 
-  :required => false, 
+  :required => true,
   :recipes => ["mongodb::relocate_dbpath"],
+  :default => '/mnt/storage',
   :choice => ['/mnt/storage']

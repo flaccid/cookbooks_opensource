@@ -15,13 +15,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-if ["centos", "redhat", "fedora"].include? node[:platform]
+if ["centos", "redhat", "fedora"].include? node.platform
   Chef::Log.info("ERROR: this cookbook only supports Ubuntu at this time, exiting.")
   exit(1)
 end
 
 # mongodb is part of the default ubuntu repository as of 10.04
-if node[:mongodb][:release] == 'stable' && node[:platform_version] == '10.04'
+if node[:mongodb][:release] == 'stable' && node.platform_version == '10.04'
   package "mongodb"
 else
   template "/etc/apt/sources.list.d/mongo_sources.list" do
@@ -34,5 +34,10 @@ else
       apt-get update
     EOH
   end
-  package "mongodb-#{node[:mongodb][:release]}"
+  package "mongodb-#{node.mongodb.release}"
+end
+
+service "mongodb" do
+  supports :status => true, :restart => true, :stop => true, :start => true, :reload => true
+  action :enable
 end

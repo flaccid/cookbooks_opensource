@@ -10,11 +10,12 @@
   },
   "attributes": {
     "mongodb/dbpath": {
-      "required": "optional",
+      "required": "required",
       "calculated": false,
       "choice": [
         "/mnt/storage"
       ],
+      "default": "/mnt/storage",
       "type": "string",
       "recipes": [
         "mongodb::relocate_dbpath"

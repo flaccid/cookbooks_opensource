@@ -19,10 +19,10 @@
 
 log "Relocate MongoDB dbpath."
 
-service "mongodb" do
-  supports :status => true, :restart => true, :stop => true, :start => true, :reload => true
-  action :nothing
-end
+#service "mongodb" do
+#  supports :status => true, :restart => true, :stop => true, :start => true, :reload => true
+#  action :nothing
+#end
 
 link "/var/lib/mongodb" do
   to node.mongodb.dbpath
