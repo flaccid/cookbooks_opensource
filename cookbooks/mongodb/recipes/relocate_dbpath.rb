@@ -17,11 +17,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+include_recipe("mongodb::default")
+
 log "Relocate MongoDB dbpath."
 
 service "mongodb" do
   supports :status => true, :restart => true, :stop => true, :start => true, :reload => true
-  action :enable
+  action :nothing
 end
 
 link "/var/lib/mongodb" do
@@ -39,7 +41,7 @@ end
 ruby_block do
   block do
     if File.directory?('/var/lib/mongodb')
-      log "/var/lib/mongodb is a directory, moving to  #{node.mongodb.dbpath}."
+      log "/var/lib/mongodb is a directory, moving to #{node.mongodb.dbpath}."
       mv.run_action(:run)
     end
   end
