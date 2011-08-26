@@ -9,6 +9,7 @@ recipe "mongodb::default", "Installs MongoDB."
 recipe "mongodb::relocate_dbpath", "Moves the MongoDB db data directory."
 recipe "mongodb::start_mongodb", "Starts the mongodb daemon."
 recipe "mongodb::stop_mongodb", "Stops the mongodb daemon."
+recipe "mongodb::configure_mongodb", "Configures mongodb."
 recipe "mongodb::restart_mongodb", "Restarts the mongodb daemon."
 
 attribute "mongodb", :display_name => "MongoDB", :type => "hash"

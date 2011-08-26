@@ -68,6 +68,7 @@
     "mongodb::start_mongodb": "Starts the mongodb daemon.",
     "mongodb::default": "Installs MongoDB.",
     "mongodb::restart_mongodb": "Restarts the mongodb daemon.",
+    "mongodb::configure_mongodb": "Configures mongodb.",
     "mongodb::stop_mongodb": "Stops the mongodb daemon."
   },
   "providing": {
