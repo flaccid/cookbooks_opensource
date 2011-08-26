@@ -9,6 +9,18 @@
   "recommendations": {
   },
   "attributes": {
+    "mongodb": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
+
+      ],
+      "type": "hash",
+      "recipes": [
+
+      ],
+      "display_name": "MongoDB"
+    },
     "mongodb/dbpath": {
       "required": "optional",
       "calculated": false,

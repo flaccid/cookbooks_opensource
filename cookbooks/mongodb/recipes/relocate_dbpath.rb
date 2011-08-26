@@ -25,18 +25,19 @@ link "/var/lib/mongodb" do
   action :nothing
 end
 
-mv = execute "move dir" do
-  command "mv -v /var/lib/mongodb #{node.mongodb.dbpath}"
-  notifies :create, "link[/var/lib/mongodb]", :immediately
-  action :nothing
-end
+directory "/var/lib/mongodb"
 
-ruby_block do
-  block do
-    if File.directory?('/var/lib/mongodb')
-      log "/var/lib/mongodb is a directory, moving to #{node.mongodb.dbpath}."
-      mv.run_action(:run)
-    end
-  end
-end
+#mv = execute "move dir" do
+#  command "mv -v /var/lib/mongodb #{node.mongodb.dbpath}"
+#  notifies :create, "link[/var/lib/mongodb]", :immediately
+#  action :nothing
+#end
+
+#ruby_block do
+#  block do
+#    if File.directory?('/var/lib/mongodb')
+#      mv.run_action(:run)
+#    end
+#  end
+#end
 
