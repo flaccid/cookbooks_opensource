@@ -7,10 +7,10 @@ version          "0.1"
 
 recipe "mongodb::default", "Installs MongoDB."
 recipe "mongodb::relocate_dbpath", "Moves the MongoDB db data directory."
-recipe "mongodb::start_mongodb", "Starts the mongodb daemon."
-recipe "mongodb::stop_mongodb", "Stops the mongodb daemon."
+recipe "mongodb::start", "Starts the mongodb daemon."
+recipe "mongodb::stop", "Stops the mongodb daemon."
 recipe "mongodb::configure", "Configures mongodb."
-recipe "mongodb::restart_mongodb", "Restarts the mongodb daemon."
+recipe "mongodb::restart", "Restarts the mongodb daemon."
 
 attribute "mongodb", :display_name => "MongoDB", :type => "hash"
 
