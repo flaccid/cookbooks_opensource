@@ -7,10 +7,6 @@ version          "0.1"
 recipe "mongodb::default", "Installs MongoDB."
 recipe "mongodb::relocate_dbpath", "Moves the MongoDB db data directory."
 
-attribute "mongodb",
-  :display_name => "MongoDB",
-  :type => "hash"
-
 attribute "mongodb/release", 
   :display_name => "MongoDB new releases", 
   :description => "By default this recipe will install the default Ubuntu package.  To override: Set this attribute to use newer sources direct from mongodb.  Valid values are 'stable', 'unstable', or 'snapshot').", 
