@@ -17,8 +17,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-include_recipe("mongodb::default")
-
 log "Relocate MongoDB dbpath."
 
 service "mongodb" do
