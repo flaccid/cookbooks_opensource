@@ -7,7 +7,9 @@ version          "0.1"
 recipe "mongodb::default", "Installs MongoDB."
 recipe "mongodb::relocate_dbpath", "Moves the MongoDB db data directory."
 
-attribute "mongodb", :display_name => "MongoDB", :type => "hash"
+attribute "mongodb",
+  :display_name => "MongoDB",
+  :type => "hash"
 
 attribute "mongodb/release", 
   :display_name => "MongoDB new releases", 
